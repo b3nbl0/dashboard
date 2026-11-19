@@ -4,7 +4,6 @@
   const nowEl = document.getElementById('power-now');
   const chartEl = document.getElementById('power-chart');
   const extEl = document.getElementById('power-extremes');
-  const vatEl = document.getElementById('power-vat');
 
   const LEVELS = {
     cheap: { label: 'Billigt', color: 'var(--good)' },
@@ -47,7 +46,8 @@
     }
   }
 
-  const ore = sek => sek * 100 * (Store.get('vat') ? 1.25 : 1);
+  // Spot price in öre/kWh including 25 % VAT (excluding grid fee and energy tax).
+  const ore = sek => sek * 100 * 1.25;
 
   // Average the four quarter-hours into one bar per hour.
   function hourly(day) {
@@ -81,7 +81,7 @@
       const t = d => hh(d) + ':' + String(d.getMinutes()).padStart(2, '0');
       nowEl.replaceChildren(
         Util.el('span', { class: 'p-value', text: Util.fmt(ore(cur.sek), 1) }),
-        Util.el('span', { class: 'p-unit', text: 'öre/kWh · ' + t(cur.start) + '–' + t(cur.end) }),
+        Util.el('span', { class: 'p-unit', text: 'öre/kWh inkl. moms · ' + t(cur.start) + '–' + t(cur.end) }),
         Util.el('span', { class: 'badge' }, Util.el('span', { class: 'dot', style: 'background:' + lvl.color }), lvl.label)
       );
     } else {
@@ -198,8 +198,6 @@
     resizeTimer = setTimeout(() => { if (days.length) render(); }, 150);
   });
 
-  vatEl.checked = !!Store.get('vat');
-  vatEl.addEventListener('change', () => { Store.set('vat', vatEl.checked); if (days.length) render(); });
 
   load();
   // Refresh right after each quarter-hour.

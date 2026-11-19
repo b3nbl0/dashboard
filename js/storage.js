@@ -6,7 +6,6 @@ window.Store = (function () {
   const DEFAULTS = {
     city: { name: 'Göteborg', lat: 57.70716, lon: 11.96679 },
     area: 'SE3',
-    vat: false,
     watchlist: [
       'VOLV B | Volvo B',
       'ERIC B | Ericsson B',

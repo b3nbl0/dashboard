@@ -52,7 +52,7 @@ On a phone the map gets a "full screen" button.
 1. **Skeleton:** `index.html`, `style.css`, `app.js`, `storage.js`, `start.bat`. Card grid, light/dark mode, phone layout.
 2. **Klocka & datum:** live time, weekday, date, week number, greeting (God morgon / God kväll).
 3. **Väder (Göteborg):** current temperature, conditions icon, wind, and a 7-day forecast. Refreshes every 30 min.
-4. **Elpris (SE3):** the price right now in öre/kWh, coloured cheap/normal/expensive compared with the rest of the day. A bar graph of today (and tomorrow, once published) with the current quarter-hour marked. Also shows today's cheapest and most expensive hours. A toggle switches between spot price and price including 25 % VAT. Updates every quarter-hour.
+4. **Elpris (SE3):** the price right now in öre/kWh, coloured cheap/normal/expensive compared with the rest of the day. A bar graph of today (and tomorrow, once published) with the current quarter-hour marked. Also shows today's cheapest and most expensive hours. Always shown including 25 % VAT. Updates every quarter-hour.
 5. **Börsen (TradingView widgets):**
    - **OMXS30:** index level, today's change in %, small intraday graph (`OMXSTO:OMXS30`).
    - **Bevakningslista:** your chosen stocks with price and today's change. Starts with a few large caps as examples (Volvo B, Ericsson B, Investor B, Atlas Copco A, H&M B); you edit the list in settings.
@@ -78,7 +78,7 @@ Each phase ends with something you can open and try.
 - Calendar: **skipped for now**.
 - Sync/login: no preference given. **Default: no sync and no login.** Each device keeps its own to-dos and notes, and the web address is unlisted rather than protected. This can be upgraded later (see below).
 - Road map: **väglag + road weather + cameras**, area **Västra Götaland**.
-- Electricity price: **SE3** (Göteborg), spot price with optional VAT.
+- Electricity price: **SE3** (Göteborg), spot price always shown including VAT.
 - Stock market: **OMXS30 + watchlist + today's winners/losers**, via **TradingView widgets** (~15 min delayed).
 
 ## Risks / not yet checked

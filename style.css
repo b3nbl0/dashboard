@@ -143,7 +143,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   outline-offset: 1px;
 }
 
-.toggle { font-size: 13px; color: var(--ink-2); display: flex; gap: 6px; align-items: center; cursor: pointer; }
 
 /* ---------- Klocka ---------- */
 #clock-card { justify-content: center; }
