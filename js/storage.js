@@ -16,7 +16,6 @@ window.Store = (function () {
       'HM B | H&M B'
     ],
     todos: [],
-    notes: '',
     tvKey: ''
   };
 

@@ -143,6 +143,7 @@
     }
 
     const tip = Util.el('div', { class: 'tooltip' });
+    let lastLabelEnd = -Infinity; // to skip x-axis labels that would overlap
     bars.forEach((b, i) => {
       const v = ore(b.sek);
       const x = padL + i * slot + gap / 2;
@@ -173,8 +174,12 @@
 
       // x-axis labels every 6 hours
       if (b.start.getHours() % 6 === 0) {
-        add('text', { class: 'axis-label', x: padL + i * slot, y: H - 6 },
-          b.start.getHours() === 0 && b.day === 1 ? 'imorgon' : hh(b.start));
+        const text = b.start.getHours() === 0 && b.day === 1 ? 'imorgon' : hh(b.start);
+        const lx = padL + i * slot;
+        if (lx >= lastLabelEnd + 6) {
+          add('text', { class: 'axis-label', x: lx, y: H - 6 }, text);
+          lastLabelEnd = lx + text.length * 6.5; // approx. width at 11px
+        }
       }
       if (b.day === 1 && b.start.getHours() === 0) {
         add('line', { class: 'day-sep', x1: padL + i * slot, x2: padL + i * slot, y1: padT, y2: H - padB });
