@@ -8,11 +8,27 @@
   const watchIn = document.getElementById('set-watch');
   const keyIn = document.getElementById('set-tvkey');
   const saveBtn = document.getElementById('settings-save');
+  const etaxIn = document.getElementById('set-etax');
+  const etaxRateIn = document.getElementById('set-etax-rate');
+  const etaxMsg = document.getElementById('set-etax-msg');
+
+  const fmtRate = n => Util.fmt(n, 1);
+  // Accepts "36", "36,0" or "36.0".
+  const parseRate = s => {
+    const n = Number(String(s).trim().replace(',', '.'));
+    return Number.isFinite(n) && n >= 0 && n < 1000 ? n : null;
+  };
+  function syncRateField() { etaxRateIn.disabled = !etaxIn.checked; }
+  etaxIn.addEventListener('change', syncRateField);
 
   function open() {
     cityIn.value = Store.get('city').name;
     cityMsg.textContent = '';
     areaIn.value = Store.get('area');
+    etaxIn.checked = !!Store.get('energyTax');
+    etaxRateIn.value = fmtRate(Number(Store.get('energyTaxRate')));
+    etaxMsg.textContent = '';
+    syncRateField();
     watchIn.value = Store.get('watchlist').join('\n');
     keyIn.value = Store.get('tvKey');
     dialog.showModal();
@@ -32,6 +48,14 @@
     e.preventDefault();
     saveBtn.disabled = true;
     try {
+      // Check the tax rate first, so nothing is half-saved if it's wrong.
+      const rate = parseRate(etaxRateIn.value);
+      if (etaxIn.checked && rate === null) {
+        etaxMsg.textContent = 'Skriv energiskatten som ett tal, t.ex. 36,0.';
+        etaxRateIn.focus();
+        return;
+      }
+
       const name = cityIn.value.trim();
       if (name && name.toLowerCase() !== Store.get('city').name.toLowerCase()) {
         cityMsg.textContent = 'Söker…';
@@ -41,6 +65,13 @@
         Store.set('city', city); Store.emit('city');
       }
       if (areaIn.value !== Store.get('area')) { Store.set('area', areaIn.value); Store.emit('area'); }
+
+      const newRate = rate === null ? Store.get('energyTaxRate') : rate;
+      if (etaxIn.checked !== !!Store.get('energyTax') || newRate !== Store.get('energyTaxRate')) {
+        Store.set('energyTax', etaxIn.checked);
+        Store.set('energyTaxRate', newRate);
+        Store.emit('energyTax');
+      }
 
       const watch = watchIn.value.split('\n').map(s => s.trim()).filter(Boolean);
       if (watch.join('\n') !== Store.get('watchlist').join('\n')) { Store.set('watchlist', watch); Store.emit('watchlist'); }

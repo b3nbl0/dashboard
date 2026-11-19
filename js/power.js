@@ -46,8 +46,11 @@
     }
   }
 
-  // Spot price in öre/kWh including 25 % VAT (excluding grid fee and energy tax).
-  const ore = sek => sek * 100 * 1.25;
+  // Spot price in öre/kWh including 25 % VAT, plus energy tax if turned on in
+  // settings (VAT is charged on the tax too). Grid fees are not included.
+  const tax = () => (Store.get('energyTax') ? Number(Store.get('energyTaxRate')) || 0 : 0);
+  const ore = sek => (sek * 100 + tax()) * 1.25;
+  const unitText = () => 'öre/kWh inkl. moms' + (tax() ? ' och energiskatt' : '');
 
   // Average the four quarter-hours into one bar per hour.
   function hourly(day) {
@@ -81,7 +84,7 @@
       const t = d => hh(d) + ':' + String(d.getMinutes()).padStart(2, '0');
       nowEl.replaceChildren(
         Util.el('span', { class: 'p-value', text: Util.fmt(ore(cur.sek), 1) }),
-        Util.el('span', { class: 'p-unit', text: 'öre/kWh inkl. moms · ' + t(cur.start) + '–' + t(cur.end) }),
+        Util.el('span', { class: 'p-unit', text: unitText() + ' · ' + t(cur.start) + '–' + t(cur.end) }),
         Util.el('span', { class: 'badge' }, Util.el('span', { class: 'dot', style: 'background:' + lvl.color }), lvl.label)
       );
     } else {
@@ -204,4 +207,5 @@
   const msToQuarter = 900000 - (Date.now() % 900000) + 2000;
   setTimeout(() => { load(); setInterval(load, 900000); }, msToQuarter);
   Store.on('area', load);
+  Store.on('energyTax', () => { if (days.length) render(); });
 })();

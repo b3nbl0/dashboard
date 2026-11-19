@@ -6,6 +6,8 @@ window.Store = (function () {
   const DEFAULTS = {
     city: { name: 'Göteborg', lat: 57.70716, lon: 11.96679 },
     area: 'SE3',
+    energyTax: false,
+    energyTaxRate: 36.0, // öre/kWh excl. VAT, Skatteverket's rate for 2026
     watchlist: [
       'VOLV B | Volvo B',
       'ERIC B | Ericsson B',

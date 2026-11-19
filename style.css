@@ -67,6 +67,7 @@ code { font-family: Consolas, ui-monospace, monospace; font-size: 0.92em; }
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: row dense; /* fill gaps left by wide cards */
   gap: 16px;
   max-width: 1400px;
   margin: 0 auto;
@@ -84,6 +85,7 @@ code { font-family: Consolas, ui-monospace, monospace; font-size: 0.92em; }
   gap: 12px;
 }
 .wide2 { grid-column: span 2; }
+.full { grid-column: 1 / -1; }
 
 .card-head {
   display: flex;
@@ -97,7 +99,7 @@ code { font-family: Consolas, ui-monospace, monospace; font-size: 0.92em; }
 }
 @media (max-width: 700px) {
   .grid { grid-template-columns: 1fr; gap: 12px; }
-  .wide2 { grid-column: auto; }
+  .wide2, .full { grid-column: auto; }
 }
 
 /* ---------- Buttons & inputs ---------- */
@@ -144,18 +146,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 }
 
 
-/* ---------- Klocka ---------- */
-#clock-card { justify-content: center; }
-.greeting { color: var(--ink-2); font-size: 15px; }
-.clock {
-  font-size: clamp(48px, 7vw, 76px);
-  font-weight: 300;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-}
-.date { font-size: 17px; }
-.date .week { color: var(--muted); }
 
 /* ---------- Väder ---------- */
 .weather-now { display: flex; align-items: center; gap: 14px; }
@@ -270,4 +260,8 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 dialog form { display: flex; flex-direction: column; gap: 6px; }
 dialog h2 { font-size: 18px; color: var(--ink); margin-bottom: 6px; }
 dialog label { font-weight: 600; font-size: 14px; margin-top: 8px; }
+dialog label.check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+dialog label.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+.inline-field { display: flex; align-items: center; gap: 8px; }
+.inline-field input { width: 7em; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }

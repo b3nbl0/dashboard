@@ -3,7 +3,7 @@
 _Created 2026-11-19 · updated 2026-11-19 (Trafikverket map, electricity price and stock market added)_
 
 ## Status (2026-11-19)
-- **Done:** phases 1–8 and 11 (published): skeleton + `start.bat`, clock, weather, electricity price, stock market, to-dos, notes, settings. Tested in Chrome: all panels load live data, and to-dos, notes and settings save correctly.
+- **Done:** phases 1–8 and 11 (published): skeleton + `start.bat`, weather, electricity price, stock market, to-dos, notes, settings. Tested in Chrome: all panels load live data, and to-dos, notes and settings save correctly.
 - **Online:** https://b3nbl0.github.io/dashboard/ (GitHub Pages from the public repo https://github.com/b3nbl0/dashboard; updates go live about a minute after a push).
 - **Next:** phase 9 (Trafikkarta – väglag). Needs your Trafikverket API key first (see "Your to-dos").
 - Checked while building: TradingView widgets work **without** a TradingView account, including OMXS30 and winners/losers for Sweden.
@@ -79,6 +79,8 @@ Each phase ends with something you can open and try.
 - Sync/login: no preference given. **Default: no sync and no login.** Each device keeps its own to-dos and notes, and the web address is unlisted rather than protected. This can be upgraded later (see below).
 - Road map: **väglag + road weather + cameras**, area **Västra Götaland**.
 - Electricity price: **SE3** (Göteborg), spot price always shown including VAT.
+- Energy tax: optional, turned on in settings (default rate 36,0 öre/kWh excl. VAT, Skatteverket 2026; VAT added on top).
+- Clock & date panel: **removed** (2026-11-19). Layout is now weather · elpris · att göra, then börsen · vinnare/förlorare, then notes full width.
 - Stock market: **OMXS30 + watchlist + today's winners/losers**, via **TradingView widgets** (~15 min delayed).
 
 ## Risks / not yet checked

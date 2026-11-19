@@ -15,13 +15,6 @@
   </header>
 
   <main class="grid">
-    <!-- Klocka & datum -->
-    <section class="card" id="clock-card" aria-label="Klocka och datum">
-      <p class="greeting" id="greeting"></p>
-      <p class="clock" id="clock">--:--</p>
-      <p class="date" id="date"></p>
-    </section>
-
     <!-- Väder -->
     <section class="card" id="weather-card" aria-label="Väder">
       <h2 id="weather-title">Väder</h2>
@@ -35,20 +28,6 @@
       <div id="power-now" class="power-now"><p class="muted">Hämtar elpris…</p></div>
       <div id="power-chart" class="power-chart"></div>
       <p id="power-extremes" class="small"></p>
-    </section>
-
-    <!-- Börsen -->
-    <section class="card wide2" id="stocks-card" aria-label="Börsen">
-      <h2>Börsen</h2>
-      <div class="stocks-grid">
-        <div class="tv-box tv-index" id="tv-index"></div>
-        <div class="tv-box tv-watch" id="tv-watch"></div>
-      </div>
-    </section>
-
-    <section class="card" id="movers-card" aria-label="Dagens vinnare och förlorare">
-      <h2>Dagens vinnare &amp; förlorare</h2>
-      <div class="tv-box tv-movers" id="tv-movers"></div>
     </section>
 
     <!-- Att göra -->
@@ -65,8 +44,22 @@
       <p id="todo-empty" class="muted">Inget att göra just nu.</p>
     </section>
 
+    <!-- Börsen -->
+    <section class="card wide2" id="stocks-card" aria-label="Börsen">
+      <h2>Börsen</h2>
+      <div class="stocks-grid">
+        <div class="tv-box tv-index" id="tv-index"></div>
+        <div class="tv-box tv-watch" id="tv-watch"></div>
+      </div>
+    </section>
+
+    <section class="card" id="movers-card" aria-label="Dagens vinnare och förlorare">
+      <h2>Dagens vinnare &amp; förlorare</h2>
+      <div class="tv-box tv-movers" id="tv-movers"></div>
+    </section>
+
     <!-- Anteckningar -->
-    <section class="card wide2" id="notes-card" aria-label="Anteckningar">
+    <section class="card full" id="notes-card" aria-label="Anteckningar">
       <div class="card-head">
         <h2>Anteckningar</h2>
         <span id="notes-status" class="small muted"></span>
@@ -92,6 +85,14 @@
         <option value="SE4">SE4 – Malmö</option>
       </select>
 
+      <label class="check"><input type="checkbox" id="set-etax"> Lägg till energiskatt i elpriset</label>
+      <div class="inline-field">
+        <input id="set-etax-rate" type="text" inputmode="decimal" aria-label="Energiskatt i öre per kWh exklusive moms">
+        <span class="small">öre/kWh exkl. moms</span>
+      </div>
+      <p class="small muted">2026 är energiskatten 36,0 öre/kWh (Skatteverket). I vissa delar av norra Sverige är den 9,6 öre lägre. Moms läggs på ovanpå.</p>
+      <p id="set-etax-msg" class="small muted"></p>
+
       <label for="set-watch">Bevakningslista</label>
       <textarea id="set-watch" rows="6"></textarea>
       <p class="small muted">En aktie per rad: kortnamn, sedan gärna ett namn efter ett lodstreck.
@@ -109,7 +110,6 @@
   </dialog>
 
   <script src="js/storage.js"></script>
-  <script src="js/clock.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/power.js"></script>
   <script src="js/stocks.js"></script>
