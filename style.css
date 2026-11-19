@@ -249,3 +249,47 @@ dialog label.check input { width: 18px; height: 18px; accent-color: var(--accent
 .inline-field { display: flex; align-items: center; gap: 8px; }
 .inline-field input { width: 7em; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+
+/* ---------- Trafikkarta ---------- */
+.traffic-head { flex-wrap: wrap; }
+.layer-toggles { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--ink-2);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 4px 10px 4px 8px; cursor: pointer; user-select: none;
+}
+.chip input { accent-color: var(--accent); margin: 0; }
+.chip:has(input:checked) { color: var(--ink); border-color: var(--accent); }
+
+.traffic-map {
+  height: 640px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--page);
+  z-index: 0; /* keep Leaflet's panes below the settings dialog */
+}
+@media (max-width: 700px) { .traffic-map { height: 420px; } }
+
+.map-message {
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 24px; text-align: center; color: var(--ink-2);
+}
+
+.traffic-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px 16px; flex-wrap: wrap; }
+.legend .legend-title { font-weight: 600; color: var(--ink-2); }
+.legend i.line { width: 16px; height: 4px; border-radius: 2px; }
+.legend i.dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #fff; box-shadow: 0 0 0 1px var(--border); }
+
+/* Dark mode: darken the light OpenStreetMap tiles so the map doesn't glare. */
+@media (prefers-color-scheme: dark) {
+  .osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85) saturate(0.6); }
+}
+
+.leaflet-popup-content { font: 13px/1.45 "Segoe UI", system-ui, sans-serif; margin: 10px 12px; }
+.leaflet-popup-content .pop-key { color: #52514e; }
+.leaflet-popup-content .pop-time { display: block; color: #898781; font-size: 12px; margin-top: 4px; }
+.cam-photo { display: block; width: 100%; height: auto; border-radius: 6px; margin-top: 6px; background: #eee; min-height: 120px; }
+.cam-icon { display: grid; place-items: center; font-size: 16px; background: #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.35); }

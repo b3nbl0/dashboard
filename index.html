@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Min översikt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,6 +34,23 @@
     <section class="card" id="movers-card" aria-label="Dagens vinnare och förlorare">
       <h2>Dagens vinnare &amp; förlorare</h2>
       <div class="tv-box tv-movers" id="tv-movers"></div>
+    </section>
+
+    <!-- Trafikkarta -->
+    <section class="card full" id="traffic-card" aria-label="Trafikkarta Västra Götaland">
+      <div class="card-head traffic-head">
+        <h2>Trafik · Västra Götaland</h2>
+        <div class="layer-toggles" role="group" aria-label="Visa på kartan">
+          <label class="chip"><input type="checkbox" id="layer-roads" checked> Väglag</label>
+          <label class="chip"><input type="checkbox" id="layer-weather" checked> Vägväder</label>
+          <label class="chip"><input type="checkbox" id="layer-cameras"> Kameror</label>
+        </div>
+      </div>
+      <div id="traffic-map" class="traffic-map"></div>
+      <div class="traffic-foot">
+        <div id="traffic-legend" class="legend"></div>
+        <p id="traffic-status" class="small muted"></p>
+      </div>
     </section>
 
     <!-- Börsen -->
@@ -76,8 +94,10 @@
         Exempel: <code>VOLV B | Volvo B</code></p>
 
       <label for="set-tvkey">Trafikverkets API-nyckel</label>
-      <input id="set-tvkey" type="text" autocomplete="off" spellcheck="false" placeholder="Används för trafikkartan (kommer snart)">
-      <p class="small muted">Sparas bara i den här webbläsaren, aldrig i koden.</p>
+      <input id="set-tvkey" type="text" autocomplete="off" spellcheck="false" placeholder="Klistra in nyckeln här">
+      <p class="small muted">Används för trafikkartan. Skapa en gratis nyckel på
+        <a href="https://data.trafikverket.se/documentation/datacache/intro" target="_blank" rel="noopener">data.trafikverket.se</a>.
+        Sparas bara i den här webbläsaren, aldrig i koden.</p>
 
       <div class="dialog-actions">
         <button type="button" id="settings-cancel" class="btn ghost">Avbryt</button>
@@ -90,6 +110,8 @@
   <script src="js/weather.js"></script>
   <script src="js/power.js"></script>
   <script src="js/stocks.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/traffic.js"></script>
   <script src="js/settings.js"></script>
 </body>
 </html>

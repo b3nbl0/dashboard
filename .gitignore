@@ -1,0 +1,3 @@
+# Local copy of the Trafikverket API key, used only for testing on this PC.
+# Never commit it: the repo is public.
+trafikverket-key.txt
