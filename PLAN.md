@@ -3,7 +3,8 @@
 _Created 2026-11-19 · updated 2026-11-19 (Trafikverket map, electricity price and stock market added)_
 
 ## Status (2026-11-19)
-- **Done:** phases 1–8: skeleton + `start.bat`, clock, weather, electricity price, stock market, to-dos, notes, settings. Tested in Chrome: all panels load live data, and to-dos, notes and settings save correctly.
+- **Done:** phases 1–8 and 11 (published): skeleton + `start.bat`, clock, weather, electricity price, stock market, to-dos, notes, settings. Tested in Chrome: all panels load live data, and to-dos, notes and settings save correctly.
+- **Online:** https://b3nbl0.github.io/dashboard/ (GitHub Pages from the public repo https://github.com/b3nbl0/dashboard; updates go live about a minute after a push).
 - **Next:** phase 9 (Trafikkarta – väglag). Needs your Trafikverket API key first (see "Your to-dos").
 - Checked while building: TradingView widgets work **without** a TradingView account, including OMXS30 and winners/losers for Sweden.
 
