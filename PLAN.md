@@ -3,7 +3,7 @@
 _Created 2026-11-19 · updated 2026-11-19 (Trafikverket map, electricity price and stock market added)_
 
 ## Status (2026-11-19)
-- **Done:** all phases (1–11): weather, electricity price, stock market, settings, and the Trafikverket map (väglag, vägväder, kameror). Tested in Chrome with live data.
+- **Done:** all phases (1–11): weather, electricity price, stock market, settings, and the Trafikverket map (väglag, vägväder, kameror — all three layers on by default). Tested in Chrome with live data.
 - **Online:** https://b3nbl0.github.io/dashboard/ (GitHub Pages from the public repo https://github.com/b3nbl0/dashboard; updates go live about a minute after a push).
 - **Map data (checked 2026-11-19):** `RoadCondition` (Road.TrafficInfo 1.3, county 14) ≈ 133 road sections; `WeatherMeasurepoint` (Road.WeatherInfo 2.1, box around the county) ≈ 169 stations; `Camera` (namespace **Road.Infrastructure**, version 1, county 14) ≈ 459 cameras. Camera photos load without a key. The key is entered in settings per device; for local testing it lives in the git-ignored `trafikverket-key.txt`.
 - **Next:** nothing planned. Ideas below.
