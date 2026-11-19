@@ -30,6 +30,11 @@
       <p id="power-extremes" class="small"></p>
     </section>
 
+    <section class="card" id="movers-card" aria-label="Dagens vinnare och förlorare">
+      <h2>Dagens vinnare &amp; förlorare</h2>
+      <div class="tv-box tv-movers" id="tv-movers"></div>
+    </section>
+
     <!-- Börsen -->
     <section class="card full" id="stocks-card" aria-label="Börsen">
       <h2>Börsen</h2>
@@ -37,25 +42,6 @@
         <div class="tv-box tv-index" id="tv-index"></div>
         <div class="tv-box tv-watch" id="tv-watch"></div>
       </div>
-    </section>
-
-    <section class="card" id="movers-card" aria-label="Dagens vinnare och förlorare">
-      <h2>Dagens vinnare &amp; förlorare</h2>
-      <div class="tv-box tv-movers" id="tv-movers"></div>
-    </section>
-
-    <!-- Att göra -->
-    <section class="card" id="todo-card" aria-label="Att göra">
-      <div class="card-head">
-        <h2>Att göra</h2>
-        <button type="button" id="todo-clear" class="link-btn">Rensa klara</button>
-      </div>
-      <form id="todo-form" class="todo-form" autocomplete="off">
-        <input id="todo-input" type="text" placeholder="Ny uppgift…" aria-label="Ny uppgift" maxlength="200">
-        <button type="submit" class="btn">Lägg till</button>
-      </form>
-      <ul id="todo-list" class="todo-list"></ul>
-      <p id="todo-empty" class="muted">Inget att göra just nu.</p>
     </section>
   </main>
 
@@ -104,7 +90,6 @@
   <script src="js/weather.js"></script>
   <script src="js/power.js"></script>
   <script src="js/stocks.js"></script>
-  <script src="js/todo.js"></script>
   <script src="js/settings.js"></script>
 </body>
 </html>

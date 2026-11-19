@@ -15,7 +15,6 @@ window.Store = (function () {
       'ATCO A | Atlas Copco A',
       'HM B | H&M B'
     ],
-    todos: [],
     tvKey: ''
   };
 

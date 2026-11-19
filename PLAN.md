@@ -3,7 +3,7 @@
 _Created 2026-11-19 · updated 2026-11-19 (Trafikverket map, electricity price and stock market added)_
 
 ## Status (2026-11-19)
-- **Done:** phases 1–8 and 11 (published): skeleton + `start.bat`, weather, electricity price, stock market, to-dos, settings. Tested in Chrome: all panels load live data, and to-dos and settings save correctly.
+- **Done:** phases 1–8 and 11 (published): skeleton + `start.bat`, weather, electricity price, stock market, settings. Tested in Chrome: all panels load live data, and settings save correctly.
 - **Online:** https://b3nbl0.github.io/dashboard/ (GitHub Pages from the public repo https://github.com/b3nbl0/dashboard; updates go live about a minute after a push).
 - **Next:** phase 9 (Trafikkarta – väglag). Needs your Trafikverket API key first (see "Your to-dos").
 - Checked while building: TradingView widgets work **without** a TradingView account, including OMXS30 and winners/losers for Sweden.
@@ -80,8 +80,8 @@ Each phase ends with something you can open and try.
 - Road map: **väglag + road weather + cameras**, area **Västra Götaland**.
 - Electricity price: **SE3** (Göteborg), spot price always shown including VAT.
 - Energy tax: optional, turned on in settings (default rate 36,0 öre/kWh excl. VAT, Skatteverket 2026; VAT added on top).
-- Clock & date and Anteckningar (notes) panels: **removed** (2026-11-19).
-- Layout (2026-11-19): two columns. Weather · elpris, then Börsen full width (OMXS30 + watchlist wide enough for all its columns, ~920px; stacked below 1300px), then vinnare/förlorare · att göra. One column on phones.
+- Clock & date, Anteckningar (notes) and Att göra (to-dos) panels: **removed** (2026-11-19).
+- Layout (2026-11-19): top row weather · elpris · vinnare/förlorare, then Börsen full width (OMXS30 + watchlist wide enough for all its columns, ~920px; stacked below 1300px). Below 1100px: two columns with vinnare/förlorare full width. One column on phones.
 - Stock market: **OMXS30 + watchlist + today's winners/losers**, via **TradingView widgets** (~15 min delayed).
 
 ## Risks / not yet checked
