@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Full-bleed square: Android crops it to its own shape (circle, squircle…). -->
+  <rect width="512" height="512" fill="#1a1a19"/>
+  <!-- Everything below stays inside the central safe zone. -->
+  <line x1="138" y1="384" x2="374" y2="384" stroke="#3a3a37" stroke-width="8" stroke-linecap="round"/>
+  <path d="M150 384V286a14 14 0 0 1 14-14h32a14 14 0 0 1 14 14v98Z" fill="#0ca30c"/>
+  <path d="M226 384V214a14 14 0 0 1 14-14h32a14 14 0 0 1 14 14v170Z" fill="#fab219"/>
+  <path d="M302 384V146a14 14 0 0 1 14-14h32a14 14 0 0 1 14 14v238Z" fill="#d03b3b"/>
+</svg>
