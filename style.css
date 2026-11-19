@@ -1,0 +1,274 @@
+:root {
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --accent: #2a78d6;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --critical: #d03b3b;
+  --good-text: #006300;
+  --bad-text: #b02a2a;
+  --radius: 14px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --accent: #3987e5;
+    --good-text: #0ca30c;
+    --bad-text: #e86a6a;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+h1, h2 { margin: 0; font-weight: 600; }
+h1 { font-size: 20px; }
+h2 { font-size: 15px; color: var(--ink-2); letter-spacing: 0.01em; }
+p { margin: 0; }
+code { font-family: Consolas, ui-monospace, monospace; font-size: 0.92em; }
+
+.muted { color: var(--muted); }
+.small { font-size: 13px; color: var(--ink-2); }
+
+/* ---------- Layout ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 16px 6px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 16px 32px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wide2 { grid-column: span 2; }
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .wide2 { grid-column: auto; }
+}
+
+/* ---------- Buttons & inputs ---------- */
+.icon-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-2);
+  border-radius: 10px;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.icon-btn:hover { color: var(--ink); }
+
+.btn {
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 9px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn.ghost { background: transparent; color: var(--ink-2); border: 1px solid var(--border); }
+.link-btn {
+  background: none; border: 0; padding: 0;
+  font: inherit; font-size: 13px; color: var(--accent); cursor: pointer;
+}
+
+input[type="text"], select, textarea {
+  font: inherit;
+  color: var(--ink);
+  background: var(--page);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 8px 10px;
+  width: 100%;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.toggle { font-size: 13px; color: var(--ink-2); display: flex; gap: 6px; align-items: center; cursor: pointer; }
+
+/* ---------- Klocka ---------- */
+#clock-card { justify-content: center; }
+.greeting { color: var(--ink-2); font-size: 15px; }
+.clock {
+  font-size: clamp(48px, 7vw, 76px);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.date { font-size: 17px; }
+.date .week { color: var(--muted); }
+
+/* ---------- Väder ---------- */
+.weather-now { display: flex; align-items: center; gap: 14px; }
+.weather-now .w-icon { font-size: 46px; line-height: 1; }
+.weather-now .w-temp { font-size: 40px; font-weight: 300; line-height: 1; font-variant-numeric: tabular-nums; }
+.weather-now .w-desc { color: var(--ink-2); font-size: 14px; }
+
+.weather-days {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px;
+  text-align: center;
+}
+.weather-days li { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+.weather-days .d-name { color: var(--ink-2); }
+.weather-days .d-icon { font-size: 20px; }
+.weather-days .d-max { font-weight: 600; font-variant-numeric: tabular-nums; }
+.weather-days .d-min { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ---------- Elpris ---------- */
+.power-now { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.power-now .p-value { font-size: 40px; font-weight: 300; line-height: 1; font-variant-numeric: tabular-nums; }
+.power-now .p-unit { color: var(--ink-2); font-size: 14px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600;
+  padding: 2px 9px 2px 7px; border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.badge .dot { width: 9px; height: 9px; border-radius: 50%; }
+
+.power-chart { position: relative; }
+.power-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.power-chart .axis-label { fill: var(--muted); font-size: 11px; }
+.power-chart .grid-line { stroke: var(--grid); stroke-width: 1; }
+.power-chart .baseline { stroke: var(--axis); stroke-width: 1; }
+.power-chart .now-line { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.power-chart .day-sep { stroke: var(--axis); stroke-width: 1; }
+.power-chart rect.bar { transition: opacity 0.1s; }
+.power-chart rect.bar.past { opacity: 0.4; }
+.power-chart rect.hit { fill: transparent; }
+
+.legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  white-space: nowrap;
+  transform: translate(-50%, calc(-100% - 8px));
+  display: none;
+  z-index: 5;
+}
+
+/* ---------- Börsen ---------- */
+.stocks-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 14px;
+}
+.tv-box { min-height: 220px; border-radius: 10px; overflow: hidden; }
+.tv-index { height: 320px; }
+.tv-watch { height: 320px; }
+.tv-movers { height: 420px; }
+.tv-box .tradingview-widget-container,
+.tv-box .tradingview-widget-container__widget { height: 100%; width: 100%; }
+.tv-box .tradingview-widget-copyright { font-size: 11px; color: var(--muted); }
+/* Chrome paints an embedded frame solid white when its colour scheme differs
+   from the page's. TradingView's frames use the default scheme, so match it
+   to keep their transparent background in dark mode. */
+.tv-box iframe { color-scheme: normal; }
+@media (max-width: 700px) {
+  .stocks-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Att göra ---------- */
+.todo-form { display: flex; gap: 8px; }
+.todo-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.todo-list li {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 4px; border-radius: 8px;
+}
+.todo-list li:hover { background: var(--page); }
+.todo-list input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.todo-list .t-text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.todo-list li.done .t-text { text-decoration: line-through; color: var(--muted); }
+.todo-list .t-btn {
+  background: none; border: 0; color: var(--muted); cursor: pointer;
+  font-size: 15px; width: 26px; height: 26px; border-radius: 6px; flex: none;
+}
+.todo-list .t-btn:hover { color: var(--ink); background: var(--grid); }
+.todo-list .t-btn:disabled { visibility: hidden; }
+
+/* ---------- Anteckningar ---------- */
+#notes { flex: 1; min-height: 200px; resize: vertical; line-height: 1.5; }
+
+/* ---------- Inställningar ---------- */
+dialog {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  width: min(480px, calc(100vw - 32px));
+  padding: 20px;
+}
+dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+dialog form { display: flex; flex-direction: column; gap: 6px; }
+dialog h2 { font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+dialog label { font-weight: 600; font-size: 14px; margin-top: 8px; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }

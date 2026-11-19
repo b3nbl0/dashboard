@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Min översikt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Min översikt</h1>
+    <button id="open-settings" class="icon-btn" type="button" aria-label="Inställningar" title="Inställningar">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.3 7.3 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 0-.5.4l-.4 2.7a7.3 7.3 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1c.5.4 1.1.7 1.7 1l.4 2.7c0 .2.2.4.5.4h4c.2 0 .4-.2.5-.4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 13ZM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"/></svg>
+    </button>
+  </header>
+
+  <main class="grid">
+    <!-- Klocka & datum -->
+    <section class="card" id="clock-card" aria-label="Klocka och datum">
+      <p class="greeting" id="greeting"></p>
+      <p class="clock" id="clock">--:--</p>
+      <p class="date" id="date"></p>
+    </section>
+
+    <!-- Väder -->
+    <section class="card" id="weather-card" aria-label="Väder">
+      <h2 id="weather-title">Väder</h2>
+      <div id="weather-now" class="weather-now"><p class="muted">Hämtar väder…</p></div>
+      <ol id="weather-days" class="weather-days"></ol>
+    </section>
+
+    <!-- Elpris -->
+    <section class="card" id="power-card" aria-label="Elpris">
+      <div class="card-head">
+        <h2 id="power-title">Elpris</h2>
+        <label class="toggle"><input type="checkbox" id="power-vat"> inkl. moms</label>
+      </div>
+      <div id="power-now" class="power-now"><p class="muted">Hämtar elpris…</p></div>
+      <div id="power-chart" class="power-chart"></div>
+      <p id="power-extremes" class="small"></p>
+    </section>
+
+    <!-- Börsen -->
+    <section class="card wide2" id="stocks-card" aria-label="Börsen">
+      <h2>Börsen</h2>
+      <div class="stocks-grid">
+        <div class="tv-box tv-index" id="tv-index"></div>
+        <div class="tv-box tv-watch" id="tv-watch"></div>
+      </div>
+    </section>
+
+    <section class="card" id="movers-card" aria-label="Dagens vinnare och förlorare">
+      <h2>Dagens vinnare &amp; förlorare</h2>
+      <div class="tv-box tv-movers" id="tv-movers"></div>
+    </section>
+
+    <!-- Att göra -->
+    <section class="card" id="todo-card" aria-label="Att göra">
+      <div class="card-head">
+        <h2>Att göra</h2>
+        <button type="button" id="todo-clear" class="link-btn">Rensa klara</button>
+      </div>
+      <form id="todo-form" class="todo-form" autocomplete="off">
+        <input id="todo-input" type="text" placeholder="Ny uppgift…" aria-label="Ny uppgift" maxlength="200">
+        <button type="submit" class="btn">Lägg till</button>
+      </form>
+      <ul id="todo-list" class="todo-list"></ul>
+      <p id="todo-empty" class="muted">Inget att göra just nu.</p>
+    </section>
+
+    <!-- Anteckningar -->
+    <section class="card wide2" id="notes-card" aria-label="Anteckningar">
+      <div class="card-head">
+        <h2>Anteckningar</h2>
+        <span id="notes-status" class="small muted"></span>
+      </div>
+      <textarea id="notes" placeholder="Skriv här… allt sparas automatiskt." aria-label="Anteckningar"></textarea>
+    </section>
+  </main>
+
+  <!-- Inställningar -->
+  <dialog id="settings">
+    <form id="settings-form" method="dialog">
+      <h2>Inställningar</h2>
+
+      <label for="set-city">Stad för väder</label>
+      <input id="set-city" type="text" required>
+      <p id="set-city-msg" class="small muted"></p>
+
+      <label for="set-area">Elområde</label>
+      <select id="set-area">
+        <option value="SE1">SE1 – Luleå</option>
+        <option value="SE2">SE2 – Sundsvall</option>
+        <option value="SE3">SE3 – Stockholm/Göteborg</option>
+        <option value="SE4">SE4 – Malmö</option>
+      </select>
+
+      <label for="set-watch">Bevakningslista</label>
+      <textarea id="set-watch" rows="6"></textarea>
+      <p class="small muted">En aktie per rad: kortnamn, sedan gärna ett namn efter ett lodstreck.
+        Exempel: <code>VOLV B | Volvo B</code></p>
+
+      <label for="set-tvkey">Trafikverkets API-nyckel</label>
+      <input id="set-tvkey" type="text" autocomplete="off" spellcheck="false" placeholder="Används för trafikkartan (kommer snart)">
+      <p class="small muted">Sparas bara i den här webbläsaren, aldrig i koden.</p>
+
+      <div class="dialog-actions">
+        <button type="button" id="settings-cancel" class="btn ghost">Avbryt</button>
+        <button type="submit" id="settings-save" class="btn">Spara</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/storage.js"></script>
+  <script src="js/clock.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/power.js"></script>
+  <script src="js/stocks.js"></script>
+  <script src="js/todo.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>
