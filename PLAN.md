@@ -7,6 +7,7 @@ _Created 2026-11-19 · updated 2026-11-19 (Trafikverket map, electricity price a
 - **Online:** https://b3nbl0.github.io/dashboard/ (GitHub Pages from the public repo https://github.com/b3nbl0/dashboard; updates go live about a minute after a push).
 - **Home screen app (2026-11-19):** `manifest.webmanifest` + icons in `icons/` (three bars in the elpris colours; `icon.svg` is the source, PNGs rendered from it). Opens full-screen without the browser bar when added to the home screen.
 - **Map data (checked 2026-11-19):** `RoadCondition` (Road.TrafficInfo 1.3, county 14) ≈ 133 road sections; `WeatherMeasurepoint` (Road.WeatherInfo 2.1, box around the county) ≈ 169 stations; `Camera` (namespace **Road.Infrastructure**, version 1, county 14) ≈ 459 cameras. Camera photos load without a key. The key is entered in settings per device; for local testing it lives in the git-ignored `trafikverket-key.txt`.
+- Map panel links to Trafikverket's own map (opens in a new tab). An iframe of their map was tested 2026-11-20 and rejected: their site header, an info popup and cookie banner show inside the frame, and it isn't an official embed.
 - **Next:** nothing planned. Ideas below.
 - Checked while building: TradingView widgets work **without** a TradingView account, including OMXS30 and winners/losers for Sweden.
 
